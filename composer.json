@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Itshayu\\ByteDance\\": "src"
+            "OtkurBiz\\ByteDance\\": "src"
         }
     },
     "require-dev": {
