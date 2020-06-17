@@ -15,7 +15,7 @@
         "doctrine/cache": "~1.4",
         "pimple/pimple": "3.0.2",
         "symfony/psr-http-message-bridge": "1.0",
-        "symfony/http-foundation": "3.0.9"
+        "symfony/http-foundation": "4.4.10"
     },
     "autoload": {
         "psr-4": {
