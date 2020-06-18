@@ -20,6 +20,9 @@ use Pimple\Container;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
+use function GuzzleHttp\json_decode;
+use function GuzzleHttp\json_encode;
+
 /**
  * Class AccessToken.
  *
@@ -170,10 +173,15 @@ abstract class AccessToken implements AccessTokenInterface
      */
     public function applyToRequest(RequestInterface $request, array $requestOptions = []): RequestInterface
     {
-        parse_str($request->getUri()->getQuery(), $query);
-        $query = http_build_query(array_merge($this->getQuery(), $query));
+        $jsonPrama = json_encode(array_merge($this->getQuery(), json_decode((string)$request->getBody(), true)));
+        // $jsonPrama = json_encode(array_merge($this->getQuery(), []));
 
-        return $request->withUri($request->getUri()->withQuery($query));
+        return new \GuzzleHttp\Psr7\Request(
+            $request->getMethod(),
+            $request->getUri(),
+            $request->getHeaders(),
+            $jsonPrama
+        );
     }
 
     /**
