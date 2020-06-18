@@ -24,13 +24,5 @@
         "overtrue/phplint": "^1.2"
     },
     "extra": {
-        "laravel": {
-            "providers": [
-                "OtkurBiz\\ByteDance\\ServiceProvider"
-            ],
-            "aliases": {
-                "ByteDance": "Overtrue\\ByteDance\\Facade"
-            }
-        }
     }
 }
